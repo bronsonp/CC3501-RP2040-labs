@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(Windows) Launch",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "console": "externalTerminal"
+    },
+    {
+      "name": "Cortex Debug",
+      "cwd": "${workspaceFolder}/tools/openocd_picoprobe/",
+      "executable": "${command:cmake.launchTargetPath}",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      "searchDir": ["${workspaceFolder}/tools/openocd_picoprobe/tcl"],
+      "gdbPath": "arm-none-eabi-gdb",
+      "device": "RP2040",
+      "configFiles": [
+        "interface/picoprobe.cfg",
+        "target/rp2040.cfg"
+        ],
+      "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+      "runToEntryPoint": "main",
+      // Give restart the same functionality as runToEntryPoint - main
+      "postRestartCommands": [
+          "break main",
+          "continue"
+      ],
+    }
+  ]
+}
