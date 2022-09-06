@@ -1,13 +1,10 @@
 #include <stdio.h>
-
-#ifdef TEST_HARNESS
-#include "mocks.h"
-#else
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 #include "hardware/pio.h"
+
 #include "WS2812.pio.h" // This header file gets produced during compilation from the WS2812.pio file
-#endif
+#include "drivers/logging/logging.h"
 
 #define LED_PIN 14
 
@@ -21,7 +18,14 @@ int main()
     uint32_t led_data [1];
 
     for (;;) {
-        puts("Hello, world!");
+
+#if LOG_DRIVER_STYLE==1
+        log(LogLevel::INFORMATION, "Hello world");
+#elif LOG_DRIVER_STYLE==2
+        log(&logger, LogLevel::INFORMATION, "Hello world");
+#elif LOG_DRIVER_STYLE==3
+        logger.log(LogLevel::INFORMATION, "Hello world");
+#endif
 
         // Turn on the first LED to be a certain colour
         uint8_t red = 0;

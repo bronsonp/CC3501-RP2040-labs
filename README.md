@@ -7,16 +7,16 @@ This is intended as a starting point for CC3501 students to build their own code
 
 # Code organisation 
 
-| Path                       | Description                                                       |
-| -------------------------- | ----------------------------------------------------------------- |
-| `src`                      | Main program source code                                          |
-| `src/main.cpp`             | Main program entry point                                          |
-| `src/drivers`              | Hardware drivers                                                  |
-| `src/drivers/WS2812/`      | Low level driver for WS2812 using PIO                             |
-| `tests`                    | Code to support the native build for testing                      |
-| `tests/mocks.h`            | Header file that replaces the Pico SDK when building natively     |
-| `tests/mocks/`             | Mock implementations of RP2040 peripherals to enable native build |
-| `tools/openocd_picoprobe/` | Software used for debugging the RP2040 target                     |
+| Path                       | Description                                                   |
+| -------------------------- | ------------------------------------------------------------- |
+| `src`                      | Main program source code                                      |
+| `src/main.cpp`             | Main program entry point                                      |
+| `src/drivers`              | Hardware drivers                                              |
+| `src/drivers/WS2812/`      | Low level driver for WS2812 using PIO                         |
+| `src/drivers/logging/`     | Example basic log driver (three styles of implementation)     |
+| `tests`                    | Code to support the native build for testing                  |
+| `tests/mocks/`             | Mock implementations of Pico SDK to enable native build       |
+| `tools/openocd_picoprobe/` | Software used for debugging the RP2040 target                 |
 
 
 # Setup instructions

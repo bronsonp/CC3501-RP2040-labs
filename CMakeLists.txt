@@ -8,12 +8,15 @@ else()
     message(STATUS "Detected that the current kit is a host compiler. Building the test harness.")
 endif()
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
+# Choose which alternative design of the Log driver is included
+set(LogDriverImplementation 3)
 
 # Detect if the active kit is an ARM cross-compiler
 if(CrossCompiling)
     # Yes, build for the RP2040
+
+    set(CMAKE_C_STANDARD 11)
+    set(CMAKE_CXX_STANDARD 17)
 
     # Specify an increased oscillator startup delay to work around a potential hardware issue where the 
     # clock is slow to boot.
@@ -31,6 +34,11 @@ if(CrossCompiling)
     target_sources(labs 
         PUBLIC
         src/main.cpp
+        src/drivers/logging/style${LogDriverImplementation}.cpp
+    )
+    target_include_directories(labs
+        PUBLIC 
+        src/
     )
 
     pico_set_program_name(labs "cc3501-labs")
@@ -61,6 +69,9 @@ if(CrossCompiling)
 
 else()
 
+    set(CMAKE_C_STANDARD 11)
+    set(CMAKE_CXX_STANDARD 20)
+
     # We are building natively, so create the test harness instead
     project(cc3501-labs CXX)
 
@@ -68,12 +79,18 @@ else()
     target_sources(labs 
         PUBLIC
         src/main.cpp
-        tests/mocks/rp2040.cpp
+        src/drivers/logging/style${LogDriverImplementation}.cpp
+        tests/mocks/pico/stdlib.cpp
+        tests/mocks/pico/time.cpp
+        tests/mocks/hardware/gpio.cpp
+        tests/mocks/hardware/pio.cpp
         tests/mocks/ws2812.cpp
     )
     target_include_directories(labs
         PUBLIC 
+        src/
         tests/
+        tests/mocks/
     )
     target_compile_definitions(labs 
         PUBLIC
@@ -81,3 +98,8 @@ else()
     )
 
 endif()
+
+target_compile_definitions(labs 
+    PUBLIC
+    LOG_DRIVER_STYLE=${LogDriverImplementation}
+)

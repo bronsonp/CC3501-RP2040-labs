@@ -1,20 +1,4 @@
 #include <iostream>
-#include "mocks/rp2040.h"
-#include "mocks/ws2812.h"
-
-#include <thread>
-#include <chrono>
-
-void stdio_init_all()
-{
-
-}
-
-void sleep_ms(uint32_t ms)
-{
-    mock_ws2812_end_transaction();
-    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-}
 
 void gpio_init(unsigned int gpio)
 {
