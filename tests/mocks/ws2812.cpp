@@ -22,9 +22,8 @@ std::binary_semaphore mock_ws2812_semaphore (0); // to signal that the idle dete
 // Storage for the last update 
 std::atomic<std::chrono::steady_clock::time_point> last_update;
 
-void ws2812_program_init(PIO &pio, unsigned int sm, unsigned int offset, unsigned int pin, float freq, bool rgbw)
+void ws2812_program_init(PIO pio, unsigned int sm, unsigned int offset, unsigned int pin, float freq, bool rgbw)
 {
-    // TODO: could sanity check the parameters passed here
     last_update.store(std::chrono::steady_clock::now());
     std::thread idle_detection (ws2812_idle_detection_thread);
     idle_detection.detach();
