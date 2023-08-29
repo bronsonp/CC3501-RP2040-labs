@@ -21,16 +21,14 @@ This is intended as a starting point for CC3501 students to build their own code
 
 # Setup instructions
 
-## Compiler toolchain
-Follow the instructions in [Getting Started with Pico](https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf) section **9.2 Building on MS Windows**.
+## Pico toolchain
+Download and install the official [RP2040 toolchain](https://github.com/raspberrypi/pico-setup-windows).
 
-## Pico SDK path 
-Make sure that the path to the Pico SDK is in an environment variable "PICO_SDK_PATH". Search "environment variables" in the start menu, open the control panel to edit environment variables, then set PICO_SDK_PATH to the full path where you cloned their repository.
-
-![](docs/pico_sdk_path.png)
+## Visual Studio Build Tools
+For building the native Windows app for local debugging, install [Build Tools for Visual Studio 2022](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022).
 
 ## Visual Studio Code 
-You must run VS Code from within a "Developer Command Prompt" (see Getting Started with Pico document, section 9.2.4).
+You must run VS Code from the shortcut in the Raspberry Pico folder (which sets up the environment variables for you).
 
 ### Building for the embedded hardware
 
@@ -56,6 +54,5 @@ When switching kits, or on the first time, it is helpful to manually set the con
 
 
 # Credits
- * The `tools/openocd_picoprobe` folder contains material from https://github.com/raspberrypi/openocd, copyright OpenOCD contributors, used under the terms of the GNU GPL version 2.0. Please refer to that repository for full details of the author list.
  * The `src/drivers/WS2812/WS2812.pio` file is an example for the RP2040 provided by the Raspberry Pi foundation, used under the terms of the BSD license. 
 

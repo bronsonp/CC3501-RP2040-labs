@@ -8,9 +8,6 @@ else()
     message(STATUS "Detected that the current kit is a host compiler. Building the test harness.")
 endif()
 
-# Choose which alternative design of the Log driver is included
-set(LogDriverImplementation 3)
-
 # Detect if the active kit is an ARM cross-compiler
 if(CrossCompiling)
     # Yes, build for the RP2040
@@ -34,7 +31,7 @@ if(CrossCompiling)
     target_sources(labs 
         PUBLIC
         src/main.cpp
-        src/drivers/logging/style${LogDriverImplementation}.cpp
+        src/drivers/logging/logging.cpp
     )
     target_include_directories(labs
         PUBLIC 
@@ -42,7 +39,7 @@ if(CrossCompiling)
     )
 
     pico_set_program_name(labs "cc3501-labs")
-    pico_set_program_version(labs "0.1")
+    pico_set_program_version(labs "0.2")
 
     # select UART for standard IO
     pico_enable_stdio_uart(labs 1)
@@ -79,7 +76,7 @@ else()
     target_sources(labs 
         PUBLIC
         src/main.cpp
-        src/drivers/logging/style${LogDriverImplementation}.cpp
+        src/drivers/logging/logging.cpp
         tests/mocks/pico/stdlib.cpp
         tests/mocks/pico/time.cpp
         tests/mocks/hardware/gpio.cpp

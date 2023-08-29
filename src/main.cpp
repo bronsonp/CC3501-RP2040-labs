@@ -18,14 +18,8 @@ int main()
     uint32_t led_data [1];
 
     for (;;) {
-
-#if LOG_DRIVER_STYLE==1
+        // Test the log system
         log(LogLevel::INFORMATION, "Hello world");
-#elif LOG_DRIVER_STYLE==2
-        log(&logger, LogLevel::INFORMATION, "Hello world");
-#elif LOG_DRIVER_STYLE==3
-        logger.log(LogLevel::INFORMATION, "Hello world");
-#endif
 
         // Turn on the first LED to be a certain colour
         uint8_t red = 0;

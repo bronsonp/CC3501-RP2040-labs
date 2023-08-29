@@ -1,26 +1,25 @@
-// Logging system, style 2 (state is defined in a structure)
+// Logging system, using the style that state is global in the C file.
 
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "pico/time.h"
-
-#include "drivers/logging/style2.h"
+#include "logging.h"
 
 // --- Device driver internal state:
-Logger logger = {
-    .maxLogLevel = LogLevel::INFORMATION,
-};
+
+/// Drop messages whose level is below this threshold.
+static LogLevel maxLogLevel = LogLevel::INFORMATION;
 
 // --- Device driver functions
-void setLogLevel(Logger *logger, LogLevel newLevel)
+void setLogLevel(LogLevel newLevel)
 {
-    logger->maxLogLevel = newLevel;
+    maxLogLevel = newLevel;
 }
 
-void log(Logger *logger, LogLevel level, const char *msg)
+void log(LogLevel level, const char *msg)
 {
     // Should we show this message?
-    if (level < logger->maxLogLevel) {
+    if (level < maxLogLevel) {
         return;
     }
 
