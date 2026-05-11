@@ -43,6 +43,19 @@
             }
         },
         {
+            "label": "Build Pico Project",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Configure Pico Project",
+                "Compile Project"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "Compile Project",
             "type": "process",
             "isBuildCommand": true,
