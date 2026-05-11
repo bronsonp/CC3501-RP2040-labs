@@ -61,6 +61,7 @@ If VS Code asks to install recommended extensions, choose **Install**.
 
 ## Raspberry Pi Pico Extension Setup
 This repository is already configured as a Pico project. If at any time in the subsequent setup, VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. Choose **No**, **Cancel**, **Not now**, or close the prompt.
+
 ![](docs/ImportRPPico.png)
 
 The Raspberry Pi Pico extension manages the Pico SDK, ARM toolchain, CMake, Ninja, OpenOCD, and related tools.
