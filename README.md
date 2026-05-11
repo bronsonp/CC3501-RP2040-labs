@@ -55,7 +55,7 @@ The required/recommended extensions are:
 3. **CMake Tools**
 4. **Cortex-Debug**
 5. **Serial Monitor**
-6. **PIOASM support**, if prompted/recommended
+6. **PIOASM Syntax Highlighting**
 
 If VS Code asks to install recommended extensions, choose **Install**.
 ![](docs/ExtensionRecommendations.png)
