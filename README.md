@@ -79,12 +79,12 @@ Select the RP2040 firmware kit:
 
 1. Press 'Ctrl + Shift + P'.
 2. Search for **CMake: Select a Kit**.
-![](docs/CMakeSelectKits.png)
 3. Choose:
 ```text
 CC3501 Pico SDK Kit
 ```
 Do not choose Visual Studio, MinGW, GCC , or 'Unspecified' when building for the development board.
+![](docs/CMakeSelectKits.png)
 
 ## Build the Pico firmware
 
