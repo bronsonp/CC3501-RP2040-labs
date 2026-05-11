@@ -29,16 +29,16 @@ You should work from your own fork of this repository. A fork is your own Github
 4. Create the fork.
 5. Open your fork and copy the HTTPS clone URL using the green **Code** button.
 
-'''text
+```text
 https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
-'''
+```
 
 6. Clone your fork to your computer:
-'''cmd
+```cmd
 git clone https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 cd CC3501-RP2040-labs
 code .
-'''
+```
 
 ## Visual Studio Code extensions
 Download and install Visual Studio Code, then install the recommended extensions when prompted after opening the repository.
@@ -72,9 +72,9 @@ Select the RP2040 firmware kit:
 1. Press 'Ctrl + Shift + P'.
 2. Search for **CMake: Select a Kit**.
 3. Choose:
-'''text
+```text
 CC3501 Pico SDK Kit
-'''
+```
 Do not choose Visual Studio, MinGW, GCC , or 'Unspecified' when building for the development board.
 
 ## Build the Pico firmware
@@ -85,10 +85,10 @@ After selecting **CC3501 Pico SDK Kit**, build the project using one of the foll
 3. Use **Terminal → Run Build Task → Build Pico Project**.
 
 A successful embedded build should produce a build folder containing:
-'''text
+```text
 build/labs.elf
 build/labs.uf2
-'''
+```
 
 The '.elf' file is used for debugging. The '.uf2' file can be copied to the board in BOOTSEL mode if needed.
 
@@ -98,11 +98,11 @@ Connect the debug probe and development board.
 
 Minimum SWD connections:
 
-'''text
+```text
 Debug probe GND → Dev board GND
 Debug probe SWDIO → Dev board SWDIO
 Debug probe SWCLK → Dev board SWCLK
-'''
+```
 Or through the 1/2 pitch 10-pin header with ribbon cable. 
 
 The board does not need to be in BOOTSEL mode for SWD debugging - however the Debug probe must be flashed with the debug probe '.uf2' file (see LearnJCU Reference Materials).
@@ -112,9 +112,9 @@ To debug:
 2. Open the **Run and Debug** panel.
 3. Select:
 
-'''text
+```text
 Pico Debug (CMSIS-DAP)
-'''
+```
 
 4. Press the green debug/play button.
 
@@ -131,9 +131,9 @@ To switch to local testing:
 2. Search for **CMake: Select a Kit**. **Note: When switching kits or debug profiles - you may need to select these twice to get them to actually change, based on past user experience.**
 3. Select a local compiler kit, such as:
 
-'''text 
+```text 
 Visual Studio Build Tools 2022 x86
-'''
+```
 
 Do not use **CC3501 Pico SDK Kit** for local testing.
 
@@ -149,25 +149,25 @@ do not use **Build Pico Project** for local testing. That task is for RP2040 fir
 
 A successful local build should produce a Windows executable, such as:
 
-'''text
+```text
 build/labs.exe
-'''
+```
 
 ## Debug the local test harness
 
 Open **Run and Debug** and select:
 
-'''text 
+```text 
 (Windows) Launch Local Test Harness
-'''
+```
 
 4. Then press the green debug/play button.
 
 If VS Code reports that it cannot find 'labs.exe', run:
 
-'''cmd
+```cmd
 dir build\*.exe /s
-'''
+```
 
 and make sure the executable exists. You may need to run **CMake: Configure** and **CMake: Build** again after switching kits.
 
