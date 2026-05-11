@@ -27,6 +27,11 @@ You should work from your own fork of this repository. A fork is your own Github
 2. Click **Fork**.
 3. Choose your own GitHub account.
 4. Create the fork.
+
+![](docs/GitFork.png)
+
+![](docs/CreateFork.png)
+
 5. Open your fork and copy the HTTPS clone URL using the green **Code** button.
 
 ```text
@@ -53,11 +58,14 @@ The required/recommended extensions are:
 6. **PIOASM support**, if prompted/recommended
 
 If VS Code asks to install recommended extensions, choose **Install**.
+![](docs/ExtensionRecommendations.png)
 
 ## Raspberry Pi Pico Extension Setup
 The Raspberry Pi Pico extension manages the Pico SDK, ARM toolchain, CMake, Ninja, OpenOCD, and related tools.
+![](docs/RaspberryPiPicoExtension.png)
 
 If the bottom bar shows **Finish Setup**, click it and allow the Pico extension to finish installing the required tools.
+![](docs/FinishSetup.png)
 
 This repository is already configured as a Pico project. If VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. Choose **No**, **Cancel**, **Not now**, or close the prompt.
 
@@ -71,6 +79,7 @@ Select the RP2040 firmware kit:
 
 1. Press 'Ctrl + Shift + P'.
 2. Search for **CMake: Select a Kit**.
+![](docs/CMakeSelectKits.png)
 3. Choose:
 ```text
 CC3501 Pico SDK Kit
@@ -91,6 +100,8 @@ build/labs.uf2
 ```
 
 The '.elf' file is used for debugging. The '.uf2' file can be copied to the board in BOOTSEL mode if needed.
+
+![](docs/PicoBuildBar.png)
 
 ## Debugging on the development board
 
@@ -117,6 +128,9 @@ Pico Debug (CMSIS-DAP)
 ```
 
 4. Press the green debug/play button.
+
+![](docs/RunandDebugOptions.png)
+
 
 # Building a native Windows app
 
@@ -170,6 +184,8 @@ dir build\*.exe /s
 ```
 
 and make sure the executable exists. You may need to run **CMake: Configure** and **CMake: Build** again after switching kits.
+
+![](docs/LocalBuildBar.png)
 
 # Switching between embedded and local builds
 
