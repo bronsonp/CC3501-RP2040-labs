@@ -44,7 +44,6 @@ git clone https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 cd CC3501-RP2040-labs
 code .
 ```
-
 ## Visual Studio Code extensions
 Download and install Visual Studio Code, then install the recommended extensions when prompted after opening the repository.
 
@@ -61,13 +60,14 @@ If VS Code asks to install recommended extensions, choose **Install**.
 ![](docs/ExtensionRecommendations.png)
 
 ## Raspberry Pi Pico Extension Setup
+This repository is already configured as a Pico project. If at any time in the subsequent setup, VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. Choose **No**, **Cancel**, **Not now**, or close the prompt.
+![](docs/ImportRPPico.png)
+
 The Raspberry Pi Pico extension manages the Pico SDK, ARM toolchain, CMake, Ninja, OpenOCD, and related tools.
 ![](docs/RaspberryPiPicoExtension.png)
 
 If the bottom bar shows **Finish Setup**, click it and allow the Pico extension to finish installing the required tools.
 ![](docs/FinishSetup.png)
-
-This repository is already configured as a Pico project. If VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. Choose **No**, **Cancel**, **Not now**, or close the prompt.
 
 # Building for the embedded hardware
 
