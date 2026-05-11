@@ -1,0 +1,14 @@
+[
+  {
+    "name": "CC3501 Pico SDK Kit",
+    "compilers": {
+      "C": "${env:USERPROFILE}/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc.exe",
+      "CXX": "${env:USERPROFILE}/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-g++.exe"
+    },
+    "environmentVariables": {
+      "PICO_SDK_PATH": "${env:USERPROFILE}/.pico-sdk/sdk/2.2.0",
+      "PICO_TOOLCHAIN_PATH": "${env:USERPROFILE}/.pico-sdk/toolchain/14_2_Rel1",
+      "PATH": "${env:USERPROFILE}/.pico-sdk/toolchain/14_2_Rel1/bin;${env:USERPROFILE}/.pico-sdk/cmake/v3.31.5/bin;${env:USERPROFILE}/.pico-sdk/ninja/v1.12.1;${env:PATH}"
+    }
+  }
+]
