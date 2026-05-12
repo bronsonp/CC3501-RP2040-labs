@@ -20,8 +20,103 @@ This is intended as a starting point for CC3501 students to build their own code
 
 # Setup instructions
 
+Before you fork and open this repository, you must first install Visual Studio Code, install the required extensions, and allow the Raspberry Pi Pico extension to set up its toolchain.
+
+This first setup step is important. It makes sure that VS Code, the Pico SDK, CMake, Ninja, OpenOCD, the ARM compiler, and related tools are installed correctly before you open the class repository.
+
+## Install Visual Studio Code
+
+Download and install Visual Studio Code:
+
+https://code.visualstudio.com/
+
+After installation, open Visual Studio Code by itself. Do not open the CC3501 repository yet, and do not open any existing Pico project yet.
+
+## Create a clean VS Code profile
+
+It is recommended that you create a separate VS Code profile for this subject. This helps avoid conflicts with extensions and settings from other projects.
+
+1. Open VS Code.
+2. Click the cog icon in the bottom-left corner.
+3. Select **Profiles**.
+4. Select **Create Profile**.
+5. Name the profile:
+
+```text
+CC3501
+```
+
+or:
+
+```text
+Pico Programming
+```
+
+6. Select the new profile and make sure it has a tick next to it.
+
+## Install the required VS Code extensions
+
+Install the required extensions now. Do not wait for VS Code to prompt you later.
+
+Open the Extensions panel in VS Code and install the following extensions:
+
+1. **Raspberry Pi Pico**
+2. **C/C++**
+3. **CMake Tools**
+4. **Cortex-Debug**
+5. **Serial Monitor**
+6. **PIOASM Syntax Highlighting**
+
+The Raspberry Pi Pico extension manages the Pico SDK, ARM toolchain, CMake, Ninja, OpenOCD, and related tools.
+
+![](docs/RaspberryPiPicoExtension.png)
+
+If the bottom bar shows **Finish Setup**, click it and allow the Pico extension to finish installing the required tools.
+
+![](docs/FinishSetup.png)
+
+## Create a temporary Pico project
+
+Before opening the CC3501 repository, create a new temporary Pico project. This allows the Raspberry Pi Pico extension to fully set up the SDK and toolchain inside your VS Code profile.
+
+1. Press `Ctrl + Shift + P`.
+2. Search for:
+
+```text
+Raspberry Pi Pico: New C/C++ Project
+```
+
+3. Create a new project with any temporary name, such as:
+
+```text
+pico-test
+```
+
+4. Select the following options:
+
+| Setting | Value |
+| --- | --- |
+| Board type | `Pico` |
+| Features | Enable `PIO interface` |
+| Stdio support | `Console over USB` |
+| Code type | Generate C++ code |
+| Other settings | Leave as default |
+
+The Pico extension should generate a simple blink-style project.
+
+Build the temporary project. This confirms that the Pico SDK, compiler, CMake, Ninja, and other build tools are working correctly.
+
+You may also upload the generated `.uf2` file to a Pico or compatible RP2040 board to confirm that the toolchain can produce working firmware.
+
+Once this temporary project builds successfully, close it. You do not need to keep this temporary project.
+
 ## Forking the Repository
-You should work from your own fork of this repository. A fork is your own Github copy of the project. You can push your changes to your fork without needing write access to the original class repository.
+
+You're now ready to work from this starting repository and you should create your own GitHub fork of this repository to maintain and extend upon your own version.
+
+A fork is your own GitHub copy of the project. You can push your changes to your fork without needing write access to the original class repository.
+
+The following outlines the fork process through the browser and later command line. However the same process can be executed with the GitHub desktop app if you have it installed already though this is not required.
 
 1. Open the [class repository](https://github.com/bronsonp/CC3501-RP2040-labs) on GitHub.
 2. Click **Fork**.
@@ -39,36 +134,30 @@ https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 ```
 
 6. Clone your fork to your computer:
+
 ```cmd
 git clone https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 cd CC3501-RP2040-labs
 code .
 ```
-## Visual Studio Code extensions
-Download and install Visual Studio Code, then install the recommended extensions when prompted after opening the repository.
 
-The required/recommended extensions are:
+## Opening the CC3501 repository
 
-1. **Raspberry Pi Pico**
-2. **C/C++**
-3. **CMake Tools**
-4. **Cortex-Debug**
-5. **Serial Monitor**
-6. **PIOASM Syntax Highlighting**
+When the repository opens in VS Code, allow VS Code and CMake Tools to configure the project.
 
-If VS Code asks to install recommended extensions, choose **Install**.
-![](docs/ExtensionRecommendations.png)
+If VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. This repository is already configured.
 
-## Raspberry Pi Pico Extension Setup
-This repository is already configured as a Pico project. If at any time in the subsequent setup, VS Code asks whether to import or convert this folder as a Raspberry Pi Pico project, do **not** import it again. Choose **No**, **Cancel**, **Not now**, or close the prompt.
+Choose **No**, **Cancel**, **Not now**, or close the prompt.
 
 ![](docs/ImportRPPicoNo.png)
 
-The Raspberry Pi Pico extension manages the Pico SDK, ARM toolchain, CMake, Ninja, OpenOCD, and related tools.
-![](docs/RaspberryPiPicoExtension.png)
+If VS Code asks you to select a CMake kit for the RP2040 firmware build, select:
 
-If the bottom bar shows **Finish Setup**, click it and allow the Pico extension to finish installing the required tools.
-![](docs/FinishSetup.png)
+```text
+CC3501 Pico SDK Kit
+```
+
+Do not choose Visual Studio, MinGW, GCC, or `Unspecified` when building for the development board.
 
 # Building for the embedded hardware
 
