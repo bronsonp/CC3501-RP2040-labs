@@ -20,7 +20,7 @@ This is intended as a starting point for CC3501 students to build their own code
 
 # Setup instructions
 
-Before you fork and open this repository, you must first install Visual Studio Code, install the required extensions, and allow the Raspberry Pi Pico extension to set up its toolchain.
+Before you clone and open this repository, you must first install Visual Studio Code, install the required extensions, and setup a preliminary test project to allow the Raspberry Pi Pico extension to set up its toolchain.
 
 This first setup step is important. It makes sure that VS Code, the Pico SDK, CMake, Ninja, OpenOCD, the ARM compiler, and related tools are installed correctly before you open the class repository.
 
@@ -79,20 +79,24 @@ If the bottom bar shows **Finish Setup**, click it and allow the Pico extension 
 
 Before opening the CC3501 repository, create a new temporary Pico project. This allows the Raspberry Pi Pico extension to fully set up the SDK and toolchain inside your VS Code profile.
 
-1. Press `Ctrl + Shift + P`.
-2. Search for:
+1. Open VS Code.
 
-```text
-Raspberry Pi Pico: New C/C++ Project
-```
+2. Click the **Raspberry Pi Pico** icon in the left-hand activity bar.
 
-3. Create a new project with any temporary name, such as:
+   ![](docs/CreateProject.png)
+
+3. In the **Raspberry Pi Pico Project: Quick Access** panel, click:
+
+   ```text
+   New C/C++ Project
+
+4. Create a new project with any temporary name, such as:
 
 ```text
 pico-test
 ```
 
-4. Select the following options:
+5. Select the following options:
 
 | Setting | Value |
 | --- | --- |
@@ -110,36 +114,176 @@ You may also upload the generated `.uf2` file to a Pico or compatible RP2040 boa
 
 Once this temporary project builds successfully, close it. You do not need to keep this temporary project.
 
-## Forking the Repository
+## Create a temporary Pico project
 
-You're now ready to work from this starting repository and you should create your own GitHub fork of this repository to maintain and extend upon your own version.
+Before opening the CC3501 repository, create a new temporary Pico project. This allows the Raspberry Pi Pico extension to fully set up the SDK and toolchain inside your VS Code profile.
 
-A fork is your own GitHub copy of the project. You can push your changes to your fork without needing write access to the original class repository.
+1. Open VS Code.
 
-The following outlines the fork process through the browser and later command line. However the same process can be executed with the GitHub desktop app if you have it installed already though this is not required.
+2. Click the **Raspberry Pi Pico** icon in the left-hand activity bar.
 
-1. Open the [class repository](https://github.com/bronsonp/CC3501-RP2040-labs) on GitHub.
-2. Click **Fork**.
-3. Choose your own GitHub account.
-4. Create the fork.
+   ![](docs/PicoQuickAccess.png)
 
-![](docs/GitFork.png)
+3. In the **Raspberry Pi Pico Project: Quick Access** panel, click:
 
-![](docs/CreateFork.png)
+   ```text
+   New C/C++ Project
+   ```
 
-5. Open your fork and copy the HTTPS clone URL using the green **Code** button.
+4. Create a new project with any temporary name, such as:
+
+   ```text
+   pico-test
+   ```
+
+5. Select the following options:
+
+   | Setting | Value |
+   | --- | --- |
+   | Board type | `Pico` |
+   | Features | Enable `PIO interface` |
+   | Stdio support | `Console over USB` |
+   | Code type | Generate C++ code |
+   | Other settings | Leave as default |
+
+The Pico extension should generate a simple blink-style project. Build the temporary project.
+
+This confirms that the Pico SDK, compiler, CMake, Ninja, and other build tools are working correctly.
+
+You may also upload the generated `.uf2` file to a Pico or compatible RP2040 board to confirm that the toolchain can produce working firmware.
+
+Once this temporary project builds successfully, close it. You do not need to keep this temporary project.
+
+## Creating your own private copy of the repository
+
+You are now ready to work from the CC3501 starting repository.
+
+Do **not** fork the repository.
+
+A fork may be visible to other students. Instead, you should clone the starting repository, create your own private GitHub repository, and then push your copy into that private repository.
+
+This gives you your own private, updateable version of the project. You can push changes as you modify and extend the code, but other students will not be able to see your work.
+
+The following steps explain how to clone the class repository and convert it into your own private GitHub project.
+
+### Step 1: Create a private GitHub repository
+
+1. Log in to GitHub.
+
+2. Click the **+** button in the top-right corner.
+
+3. Select **New repository**.
+
+4. Choose a repository name, for example:
+
+   ```text
+   CC3501-RP2040-labs-yourname
+   ```
+
+5. Set the repository visibility to:
+
+   ```text
+   Private
+   ```
+
+6. Do **not** add a README.
+
+7. Do **not** add a `.gitignore`.
+
+8. Do **not** add a licence.
+
+The repository must be empty, because you will push the CC3501 starter code into it from your computer.
+
+After creating the private repository, copy its HTTPS clone URL using the green **Code** button.
+
+It should look similar to:
 
 ```text
-https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
+https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git
 ```
 
-6. Clone your fork to your computer:
+### Step 2: Clone the CC3501 starting repository
+
+Open a terminal in the folder where you want to store your class work.
+
+Clone the CC3501 starting repository:
 
 ```cmd
-git clone https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
-cd CC3501-RP2040-labs
+git clone https://github.com/bronsonp/CC3501-RP2040-labs.git CC3501-RP2040-labs-yourname
+```
+
+Move into the cloned repository folder:
+
+```cmd
+cd CC3501-RP2040-labs-yourname
+```
+
+This downloads the starting code from the class repository onto your computer.
+
+### Step 3: Convert the cloned repository to your own private project
+
+The cloned repository currently points back to the original class repository. You need to change this so that your pushes go to your own private GitHub repository instead.
+
+First, rename the original class repository remote to `upstream`:
+
+```cmd
+git remote rename origin upstream
+```
+
+Now add your own private GitHub repository as `origin`.
+
+Replace `YOUR-USERNAME` and the repository name with your actual GitHub details:
+
+```cmd
+git remote add origin https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git
+```
+
+To help prevent accidental pushes to the original class repository, disable pushing to `upstream`:
+
+```cmd
+git remote set-url --push upstream DISABLED
+```
+
+Check that the remotes are correct:
+
+```cmd
+git remote -v
+```
+
+You should see something similar to:
+
+```text
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (fetch)
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (push)
+upstream  https://github.com/bronsonp/CC3501-RP2040-labs.git (fetch)
+upstream  DISABLED (push)
+```
+
+`origin` is your private repository.
+
+`upstream` is the original CC3501 starting repository.
+
+You should push your work to `origin`, not to `upstream`.
+
+### Step 4: Push the starter code to your private repository
+
+Push the starter code into your private GitHub repository:
+
+```cmd
+git push -u origin master
+```
+
+Your private GitHub repository should now contain the CC3501 starter code.
+
+### Step 5: Open the project in VS Code
+
+Open the project folder in VS Code:
+
+```cmd
 code .
 ```
+
+You should now be working in your own private copy of the CC3501 labs repository.
 
 ## Opening the CC3501 repository
 
@@ -296,6 +440,8 @@ Then select the correct kit and rebuild.
 
 # Git workflow
 
+As you complete the lab tasks, you should regularly save your work using Git.
+
 After making changes, check the status:
 
 ```cmd
@@ -308,19 +454,38 @@ Stage your changes:
 git add .
 ```
 
-Commit your changes:
+Commit your changes with a short message describing what you changed:
 
 ```cmd
 git commit -m "Describe the change you made"
 ```
 
-Push to your fork:
+Push your changes to your private GitHub repository:
 
 ```cmd
 git push
 ```
 
-You should push to your own fork, not the original class repository.
+You should push to your own private repository, not the original CC3501 class repository.
+
+You can check where your repository will push by running:
+
+```cmd
+git remote -v
+```
+
+The `origin` remote should point to your own private GitHub repository.
+
+For example:
+
+```text
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (fetch)
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (push)
+upstream  https://github.com/bronsonp/CC3501-RP2040-labs.git (fetch)
+upstream  DISABLED (push)
+```
+
+If `origin` points to `https://github.com/bronsonp/CC3501-RP2040-labs.git`, then your repository has not been set up correctly. Ask for help before pushing.
 
 # Common pitfalls
 
