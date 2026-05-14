@@ -116,13 +116,9 @@ Once this temporary project builds successfully, close it. You do not need to ke
 
 ## Creating your own private copy of the repository
 
-You are now ready to work from the CC3501 starting repository.
+You are now ready to work from the CC3501 starting repository. You should clone the starting repository, create your own private GitHub repository, and then push your copy into that private repository.
 
-Do **not** fork the repository.
-
-A fork may be visible to other students. Instead, you should clone the starting repository, create your own private GitHub repository, and then push your copy into that private repository.
-
-This gives you your own private, updateable version of the project. You can push changes as you modify and extend the code, but other students will not be able to see your work.
+This gives you your own private, updateable version of the project. You can push changes as you modify and extend the code.
 
 The following steps explain how to clone the class repository and convert it into your own private GitHub project.
 
@@ -134,10 +130,10 @@ The following steps explain how to clone the class repository and convert it int
 
 3. Select **New repository**.
 
-4. Choose a repository name, for example:
+4. Choose a repository name:
 
    ```text
-   CC3501-RP2040-labs-yourname
+   CC3501-RP2040-labs
    ```
 
 5. Set the repository visibility to:
@@ -159,7 +155,7 @@ After creating the private repository, copy its HTTPS clone URL using the green 
 It should look similar to:
 
 ```text
-https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git
+https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 ```
 
 ### Step 2: Clone the CC3501 starting repository
@@ -169,13 +165,13 @@ Open a terminal in the folder where you want to store your class work.
 Clone the CC3501 starting repository:
 
 ```cmd
-git clone https://github.com/bronsonp/CC3501-RP2040-labs.git CC3501-RP2040-labs-yourname
+git clone https://github.com/bronsonp/CC3501-RP2040-labs.git CC3501-RP2040-labs
 ```
 
 Move into the cloned repository folder:
 
 ```cmd
-cd CC3501-RP2040-labs-yourname
+cd CC3501-RP2040-labs
 ```
 
 This downloads the starting code from the class repository onto your computer.
@@ -195,7 +191,7 @@ Now add your own private GitHub repository as `origin`.
 Replace `YOUR-USERNAME` and the repository name with your actual GitHub details:
 
 ```cmd
-git remote add origin https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git
+git remote add origin https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git
 ```
 
 To help prevent accidental pushes to the original class repository, disable pushing to `upstream`:
@@ -213,8 +209,8 @@ git remote -v
 You should see something similar to:
 
 ```text
-origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (fetch)
-origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs-yourname.git (push)
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git (fetch)
+origin    https://github.com/YOUR-USERNAME/CC3501-RP2040-labs.git (push)
 upstream  https://github.com/bronsonp/CC3501-RP2040-labs.git (fetch)
 upstream  DISABLED (push)
 ```
