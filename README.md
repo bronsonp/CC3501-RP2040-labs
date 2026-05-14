@@ -477,6 +477,9 @@ You should see:
 build\labs.elf
 ```
 
+## Repo Naming 
+If you name your GitHub repo incorrectly (i.e. not the format of YOUR-USERNAME/CC3501-RP2040-labs.git) it is possible that the .json project files will no longer point to the correct locations regarding builing/compilation paths - so you should either keep your naming consistent or update the file path names where necessary if this problem arises.
+
 ## Debug probe detected but target will not connect
 
 If OpenOCD reports that CMSIS-DAP is ready but cannot connect to the RP2040, check:
