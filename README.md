@@ -114,46 +114,6 @@ You may also upload the generated `.uf2` file to a Pico or compatible RP2040 boa
 
 Once this temporary project builds successfully, close it. You do not need to keep this temporary project.
 
-## Create a temporary Pico project
-
-Before opening the CC3501 repository, create a new temporary Pico project. This allows the Raspberry Pi Pico extension to fully set up the SDK and toolchain inside your VS Code profile.
-
-1. Open VS Code.
-
-2. Click the **Raspberry Pi Pico** icon in the left-hand activity bar.
-
-   ![](docs/PicoQuickAccess.png)
-
-3. In the **Raspberry Pi Pico Project: Quick Access** panel, click:
-
-   ```text
-   New C/C++ Project
-   ```
-
-4. Create a new project with any temporary name, such as:
-
-   ```text
-   pico-test
-   ```
-
-5. Select the following options:
-
-   | Setting | Value |
-   | --- | --- |
-   | Board type | `Pico` |
-   | Features | Enable `PIO interface` |
-   | Stdio support | `Console over USB` |
-   | Code type | Generate C++ code |
-   | Other settings | Leave as default |
-
-The Pico extension should generate a simple blink-style project. Build the temporary project.
-
-This confirms that the Pico SDK, compiler, CMake, Ninja, and other build tools are working correctly.
-
-You may also upload the generated `.uf2` file to a Pico or compatible RP2040 board to confirm that the toolchain can produce working firmware.
-
-Once this temporary project builds successfully, close it. You do not need to keep this temporary project.
-
 ## Creating your own private copy of the repository
 
 You are now ready to work from the CC3501 starting repository.
